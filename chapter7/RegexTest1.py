@@ -74,3 +74,6 @@ phoneRegex = re.compile(r'''(
     (\s*(ext|x|ext.)\s*(\d{2,5}))?  # extension
     )''', re.VERBOSE)
 print(phoneRegex.findall('415-863-9900a415-863-9950'))
+
+pwdRegex = re.compile(r'[a-zA-Z0-9]{8,}')
+print(pwdRegex.search('FFFFFFFF'))
