@@ -5,7 +5,7 @@ import os
 import shutil
 
 # 创建一个正则表达式匹配美国日期格式,因为涉及换位置，要分组
-dateRegex = re.compile(r'\w{3}-\d{2}-\d{4}')
+# dateRegex = re.compile(r'\w{3}-\d{2}-\d{4}')
 dateRegex = re.compile(r'''
     ^(.*?)              # 日期前面的文本
     ((0|1)?\d)-         # 月份
