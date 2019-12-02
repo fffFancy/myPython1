@@ -1,7 +1,7 @@
-import re, os, shutil
+import re, os, shutil, random
 
 
-os.chdir('spam')
+# os.chdir('spam')
 # spam开头，并且紧跟着编号的文件，编号至少3位数
 numberRegex = re.compile(r'''
     ^(spam)             # begin with 'spam'
@@ -31,6 +31,18 @@ for i in range(1, max(numberSerial)):
 
 # 修改名字
 for n, f in zip(spamSerial, fullSerial):
-    changedName = n[:4] + str(f).rjust(3,'0') + n[7:]
+    changedName = n[:4] + str(f).rjust(3, '0') + n[7:]
     shutil.move(n, changedName)
     print(changedName)
+
+## 连续编号文件，空出一些编号
+spam2Serial = []
+for file in os.listdir(os.getcwd()):
+    numberMatch = numberRegex.match(file)
+    if numberMatch is not None:
+        spam2Serial.append(file)
+
+for file2 in random.sample(spam2Serial, 2):
+    randomNum = random.randint(2, 999)
+    changedName = file2[:4] + str(randomNum).rjust(3, '0') + file2[7:]
+    shutil.move(file2, changedName)
